@@ -1,4 +1,4 @@
 ---
 - name: "Install Consul"
   dnf:
-    name: consul_{{ version }}
+    name: consul-{{ version }}
