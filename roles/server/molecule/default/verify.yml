@@ -5,6 +5,6 @@
   hosts: all
   gather_facts: false
   tasks:
-  - name: "Ensure Consul is Installed"
-    command:
-      cmd: "consul --version"
+  - name: "Consul is running"
+    ansible.builtin.command:
+      cmd: "consul members"
