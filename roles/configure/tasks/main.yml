@@ -1,0 +1,9 @@
+---
+# - name: "Ensure Configuration Location: {{ configuration_location }} exists"
+- name: "Create Consul Configuration"
+  ansible.builtin.template:
+    src: 'hcl.j2'
+    owner: root
+    mode: 0644
+    dest: "{{ configuration_location }}{{ item.key }}.json"
+  with_dict: "{{ configuration }}"

@@ -1,0 +1,8 @@
+---
+configuration_location: /etc/consul.d/
+configuration:
+  main:
+    foo: 'bar'
+  baz:
+    bar: 'blah'
+    bin: 'boo'
