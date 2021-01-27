@@ -1,4 +1,5 @@
 ---
 - name: "Install Consul"
-  dnf:
+  ansible.builtin.package:
     name: consul-{{ version }}
+    state: present
