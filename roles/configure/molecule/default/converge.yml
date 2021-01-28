@@ -1,8 +1,16 @@
 ---
 - name: Converge
   hosts: all
-  gather_facts: false
+  gather_facts: true
   tasks:
     - name: "Include configure"
       include_role:
         name: "configure"
+      vars:
+        version: '1.9.2'
+        configuration:
+          main:
+            foo: 'bar'
+          baz:
+            bar: 'blah'
+            bin: 'boo'
