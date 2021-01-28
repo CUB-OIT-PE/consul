@@ -10,7 +10,9 @@
         version: '1.9.2'
         configuration:
           main:
-            foo: 'bar'
-          baz:
-            bar: 'blah'
-            bin: 'boo'
+            datacenter: 'bar'
+            data_dir: '/tmp'
+            node_name: 'foobar'
+            server: true
+          logging:
+            log_level: 'INFO'
