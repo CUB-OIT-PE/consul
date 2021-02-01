@@ -1,2 +1,5 @@
 ---
+# The version of consul to use
 version:
+# Should the package be locked? Assumes YUM/DNF
+version_lock: True

@@ -3,8 +3,6 @@
 - name: "Install Consul Binary"
   include_role:
     name: install
-  vars:
-    - version: {{ version }}
 
 - name: "Start and Enable Consul Service"
   ansible.builtin.service:
