@@ -45,7 +45,7 @@ jobs:
 
       - name: Run role test
         env:
-          MOLECULE_DRIVER_NAME: docker
+          DRIVER: docker
           MOLECULE_COMMAND: ${{ matrix.molecule_distro.command }}
           MOLECULE_DISTRO: ${{ matrix.molecule_distro.distro }}
           MOLECULE_IMAGE: ${{ matrix.molecule_distro.image }}
