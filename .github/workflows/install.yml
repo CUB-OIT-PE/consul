@@ -19,8 +19,8 @@ jobs:
       fail-fast: true
       matrix:
         molecule_distro:
-          - distro: rhel:8
-            image: registry.access.redhat.com/ubi8/ubi-init
+          - distro: rhel8
+            image: centos:8
             command: /usr/sbin/init
         collection_role:
           - role_install
@@ -45,6 +45,7 @@ jobs:
 
       - name: Run role test
         env:
+          MOLECULE_DRIVER_NAME: docker
           MOLECULE_COMMAND: ${{ matrix.molecule_distro.command }}
           MOLECULE_DISTRO: ${{ matrix.molecule_distro.distro }}
           MOLECULE_IMAGE: ${{ matrix.molecule_distro.image }}
