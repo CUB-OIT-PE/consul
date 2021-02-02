@@ -11,7 +11,7 @@ on:
       - '.github/workflows/install.yml'
 jobs:
   molecule:
-    runs-on: ubuntu-20.10
+    runs-on: ubuntu-20.04
     env:
       PY_COLORS: 1 # allows molecule colors to be passed to GitHub Actions
       ANSIBLE_FORCE_COLOR: 1 # allows ansible colors to be passed to GitHub Actions
@@ -37,9 +37,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt install podman
+          sudo apt install apt-transport-https ca-certificates curl software-properties-common
+          curl -fsSL https://get.docker.com -o get-docker.sh
+          sudo sh get-docker.sh
           python -m pip install --upgrade pip
-          pip install molecule molecule-podman yamllint ansible-lint
+          pip install molecule molecule-docker yamllint ansible-lint docker
 
       - name: Run role test
         run: >-
