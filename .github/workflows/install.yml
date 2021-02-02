@@ -1,0 +1,52 @@
+---
+name: "cub_oit_pe.consul.install"
+on:
+  push:
+    paths:
+      - 'roles/install/**'
+      - '.github/workflows/install.yml'
+  pull_request:
+    paths:
+      - 'roles/install/**'
+      - '.github/workflows/install.yml'
+jobs:
+  molecule:
+    runs-on: ubuntu-20.10
+    env:
+      PY_COLORS: 1 # allows molecule colors to be passed to GitHub Actions
+      ANSIBLE_FORCE_COLOR: 1 # allows ansible colors to be passed to GitHub Actions
+    strategy:
+      fail-fast: true
+      matrix:
+        molecule_distro:
+          - distro: rhel:8
+            image: registry.access.redhat.com/ubi8/ubi-init
+            command: /usr/sbin/init
+        collection_role:
+          - role_install
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+        with:
+          path: ansible_collections/cub_oit_pe/consul
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          sudo apt install podman
+          python -m pip install --upgrade pip
+          pip install molecule molecule-podman yamllint ansible-lint
+
+      - name: Run role test
+        run: >-
+          molecule --version &&
+          ansible --version &&
+          MOLECULE_COMMAND=${{ matrix.molecule_distro.command }}
+          MOLECULE_DISTRO=${{ matrix.molecule_distro.distro }}
+          MOLECULE_IMAGE=${{ matrix.molecule_distro.image }}
+          cd tests/integration &&
+          molecule --debug test -s ${{ matrix.collection_role }}
