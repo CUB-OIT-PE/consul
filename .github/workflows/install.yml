@@ -44,11 +44,12 @@ jobs:
           pip install molecule molecule-docker yamllint ansible-lint docker
 
       - name: Run role test
+        env:
+          MOLECULE_COMMAND: ${{ matrix.molecule_distro.command }}
+          MOLECULE_DISTRO: ${{ matrix.molecule_distro.distro }}
+          MOLECULE_IMAGE: ${{ matrix.molecule_distro.image }}
         run: >-
           molecule --version &&
           ansible --version &&
-          MOLECULE_COMMAND=${{ matrix.molecule_distro.command }}
-          MOLECULE_DISTRO=${{ matrix.molecule_distro.distro }}
-          MOLECULE_IMAGE=${{ matrix.molecule_distro.image }}
           cd tests/integration &&
           molecule --debug test -s ${{ matrix.collection_role }}
