@@ -2,7 +2,7 @@
 dependency:
   name: galaxy
 driver:
-  name: ${DRIVER:-podman}
+  name: podman
 platforms:
   - name: ${MOLECULE_DISTRO}
     image: ${MOLECULE_IMAGE}
