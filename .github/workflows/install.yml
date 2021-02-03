@@ -20,7 +20,7 @@ jobs:
       matrix:
         molecule_distro:
           - distro: rhel8
-            image: centos:8
+            image: registry.centos.org/centos:8
             command: /usr/sbin/init
         collection_role:
           - role_install
