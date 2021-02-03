@@ -21,7 +21,7 @@ jobs:
         molecule_distro:
           - distro: rhel8
             image: registry.centos.org/centos:8
-            command: /usr/sbin/init
+            command: /sbin/init
         collection_role:
           - role_install
     steps:
