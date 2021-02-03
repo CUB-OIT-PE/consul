@@ -12,7 +12,8 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     command: ${MOLECULE_COMMAND:-"sleep infinity"}
-    privileged: true
+    capabilities:
+      - SYS_ADMIN
     pre_build_image: true
 provisioner:
   name: ansible
