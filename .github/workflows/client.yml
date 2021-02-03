@@ -51,7 +51,5 @@ jobs:
         run: >-
           molecule --version &&
           ansible --version &&
-          molecule --debug create -s ${{ matrix.collection_role }} &&
-          podman ps &&
-          podman inspect rhel8
+          molecule --debug test -s ${{ matrix.collection_role }} &&
         working-directory: tests/integration
