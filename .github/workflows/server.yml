@@ -1,14 +1,14 @@
 ---
-name: "cub_oit_pe.consul.install"
+name: "cub_oit_pe.consul.server"
 on:
   push:
     paths:
-      - 'roles/install/**'
-      - '.github/workflows/install.yml'
+      - 'roles/server/**'
+      - '.github/workflows/server.yml'
   pull_request:
     paths:
-      - 'roles/install/**'
-      - '.github/workflows/install.yml'
+      - 'roles/server/**'
+      - '.github/workflows/server.yml'
 jobs:
   molecule:
     runs-on: ubuntu-20.04
@@ -23,7 +23,7 @@ jobs:
             image: centos:8
             command: /usr/sbin/init
         collection_role:
-          - role_install
+          - role_server
     steps:
       - name: Check out code
         uses: actions/checkout@v1
