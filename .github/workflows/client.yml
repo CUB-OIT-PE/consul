@@ -21,8 +21,8 @@ jobs:
       fail-fast: true
       matrix:
         molecule_distro:
-          - distro: centos-8
-            image: centos-8
+          - distro: centos:8
+            image: centos8
             command: /sbin/init
         collection_role:
           - role_client
