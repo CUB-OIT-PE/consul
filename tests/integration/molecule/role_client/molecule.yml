@@ -4,29 +4,16 @@ dependency:
 driver:
   name: podman
 platforms:
-  - name: rhel8
-    image: registry.access.redhat.com/ubi8/ubi-init
+  - name: ${MOLECULE_DISTRO}
+    image: ${MOLECULE_IMAGE}
     tmpfs:
       - /run
       - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    capabilities:
-      - SYS_ADMIN
-    command: "/usr/sbin/init"
+    privileged: true
+    command: ${MOLECULE_COMMAND:-"sleep infinity"}
     pre_build_image: true
-  # TODO: Sort out RHEL 7, systemd is not playing well.
-  # - name: rhel7
-  #   image: registry.access.redhat.com/ubi7/ubi-init
-  #   tmpfs:
-  #     - /tmp
-  #     - /run
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
-  #   capabilities:
-  #     - SYS_ADMIN
-  #   command: "/usr/sbin/init"
-  #   pre_build_image: true
 provisioner:
   name: ansible
   config_options:
