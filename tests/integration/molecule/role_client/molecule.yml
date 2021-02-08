@@ -4,11 +4,15 @@ dependency:
 driver:
   name: podman
 platforms:
-  - name: ${MOLECULE_IMAGE}
-    image: ${MOLECULE_DISTRO}
+  - name: ${MOLECULE_DISTRO}
+    image: ${MOLECULE_IMAGE}
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
     command: ${MOLECULE_COMMAND:-"sleep infinity"}
-    capabilities:
-      - SYS_ADMIN
     pre_build_image: true
 provisioner:
   name: ansible
