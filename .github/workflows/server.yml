@@ -20,10 +20,11 @@ jobs:
       matrix:
         molecule_distro:
           - distro: rhel8
-            image: registry.centos.org/centos:8
+            image: registry.access.redhat.com/ubi8/ubi-init
             command: /sbin/init
         collection_role:
-          - role_server
+          - role_server_default
+          - role_server_exporter
     steps:
       - name: Check out code
         uses: actions/checkout@v1
