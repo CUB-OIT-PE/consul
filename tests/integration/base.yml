@@ -6,6 +6,7 @@ scenario:
     - create
     - prepare
     - converge
+    - verify
     - cleanup
     - destroy
 dependency:
