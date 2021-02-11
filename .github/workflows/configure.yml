@@ -5,9 +5,12 @@ on:
     paths:
       - 'roles/configure/**'
       - '.github/workflows/configure.yml'
+      - 'tests/integration/molecule/role_configure*/**'
+      - 'tests/integration/base.yml'
   pull_request:
     paths:
       - 'roles/configure/**'
+      - 'tests/integration/molecule/role_configure*/**'
       - '.github/workflows/configure.yml'
 jobs:
   molecule:

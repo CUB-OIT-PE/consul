@@ -5,10 +5,14 @@ on:
     paths:
       - 'roles/server/**'
       - '.github/workflows/server.yml'
+      - 'tests/integration/molecule/role_server*/**'
+      - 'tests/integration/base.yml'
   pull_request:
     paths:
       - 'roles/server/**'
       - '.github/workflows/server.yml'
+      - 'tests/integration/molecule/role_server*/**'
+      - 'tests/integration/base.yml'
 jobs:
   molecule:
     runs-on: ubuntu-20.04

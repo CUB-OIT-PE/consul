@@ -2,6 +2,7 @@
 scenario:
   test_sequence:
     - destroy
+    - dependency
     - create
     - prepare
     - converge
