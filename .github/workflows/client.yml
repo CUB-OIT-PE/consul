@@ -41,7 +41,7 @@ jobs:
         run: |
           sudo apt install apt-transport-https ca-certificates curl software-properties-common
           python -m pip install --upgrade pip
-          pip install molecule molecule-podman yamllint ansible-lint
+          pip install ansible ansible-lint molecule molecule-podman yamllint
 
       - name: Run Role Test
         env:
@@ -55,5 +55,4 @@ jobs:
           molecule --version
           ansible --version
           molecule --debug -c base.yml test -s ${{ matrix.collection_role }}
-          podman inspect centos8
         working-directory: tests/integration
