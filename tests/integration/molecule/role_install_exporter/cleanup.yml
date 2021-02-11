@@ -1,0 +1,9 @@
+---
+- name: Cleanup
+  hosts: all
+  gather_facts: false
+  tasks:
+
+    - name: 'Unregister Container with RHSM'
+      community.general.redhat_subscription:
+        state: absent

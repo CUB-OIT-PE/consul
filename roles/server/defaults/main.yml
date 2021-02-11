@@ -1,7 +1,7 @@
 ---
 # Should the Prometheus Consul Exporter be Installed
-consul_exporter: False
+consul_exporter: false
 # The version of consul to use
 version:
 # Should the package be locked? Assumes YUM/DNF
-version_lock: True
+version_lock: true

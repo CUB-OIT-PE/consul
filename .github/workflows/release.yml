@@ -1,9 +1,9 @@
-
+---
 name: Release
 
 on:
   push:
-      branches:
+    branches:
       - main
 
 jobs:
@@ -11,6 +11,7 @@ jobs:
     name: Tag and deploy release
     runs-on: ubuntu-latest
     steps:
+
     - uses: actions/checkout@v2
 
     - name: grab version tag
@@ -33,3 +34,4 @@ jobs:
       uses: artis3n/ansible_galaxy_collection@v2
       with:
         api_key: ${{ secrets.GALAXY_API_KEY }}
+

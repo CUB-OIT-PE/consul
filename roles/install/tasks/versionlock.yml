@@ -1,3 +1,4 @@
+---
 - name: "Version Lock the Consul Package"
   community.general.yum_versionlock:
     name: consul

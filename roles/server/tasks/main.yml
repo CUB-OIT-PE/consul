@@ -8,11 +8,11 @@
   ansible.builtin.service:
     name: 'consul'
     state: started
-    enabled: yes
+    enabled: true
 
 - name: "Start and enable Consul Exporter Service"
   ansible.builtin.service:
     name: 'consul_exporter'
     state: started
-    enabled: yes
+    enabled: true
   when: consul_exporter

@@ -13,8 +13,8 @@ jobs:
   molecule:
     runs-on: ubuntu-20.04
     env:
-      PY_COLORS: 1 # allows molecule colors to be passed to GitHub Actions
-      ANSIBLE_FORCE_COLOR: 1 # allows ansible colors to be passed to GitHub Actions
+      PY_COLORS: 1
+      ANSIBLE_FORCE_COLOR: 1
     strategy:
       fail-fast: true
       matrix:
@@ -46,6 +46,9 @@ jobs:
           MOLECULE_COMMAND: ${{ matrix.molecule_distro.command }}
           MOLECULE_DISTRO: ${{ matrix.molecule_distro.distro }}
           MOLECULE_IMAGE: ${{ matrix.molecule_distro.image }}
+          RHSM_ACTIVATION_KEY: ${{ secrets.RHSM_ACTIVATION_KEY }}
+          RHSM_ORG_ID: ${{ secrets.RHSM_ORG_ID }}
+          RHSM_POOL_ID: ${{ secrets.RHSM_POOL_ID }}
         run: >-
           molecule --version &&
           ansible --version &&
