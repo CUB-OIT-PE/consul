@@ -8,3 +8,4 @@
       vars:
         - version: '1.9.3'
         - consul_exporter: true
+        - consul_exporter_version: '0.7.1'
